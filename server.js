@@ -1,22 +1,76 @@
 var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var authController = require('./auth');
+
 
 var app = express();
-app.use(bodyParser.text({
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(passport.initialize());
+
+var router = express.Router();
+
+function responder(method, request, response) {
+
+    var allHeaders = request.headers;
+    var allBodies = request.body;
+    var uniquekey = process.env.UNIQUE_KEY;
+    var query = method;
+
+    if (request.headers === null){
+        allHeaders = "No headers found";
+    }
+    if (request.body === null){
+        allBodies = "No bodies found";
+    }
+
+    response.status(200);
+    response.json({message: query, headers: allHeaders, body: allBodies, UNIQUE_KEY: uniquekey});
+}
+
+router.use(bodyParser.text({
     type: function(req) {
         return 'text';
     }
 }));
 
-app.post('/post', function (req, res) {
-    console.log(req.body);
-    res = res.status(200);
-    if (req.get('Content-Type')) {
-        console.log("Content-Type: " + req.get('Content-Type'));
-        res = res.type(req.get('Content-Type'));
-    }
-    res.send(req.body);
-});
+router.route('/post')
+    .post(function (request, response) {
+            responder('posts', request, response);
+        }
+);
 
-http.createServer(app).listen(process.env.PORT || 8080);
+router.route('/get')
+    .get(function (request, response) {
+           responder('gets', request, response);
+        }
+);
+
+router.route('/put')
+    .put(function (request, response) {
+           responder('puts', request, response);
+        }
+);
+
+router.route('/delete')
+    .post(authController.isAuthenticated,function (request, response) {
+            console.log(request.body);
+            res = res.status(200);
+            if (req.get('Content-Type')) {
+                console.log("Content-Type: " + req.get('Content-Type'));
+                res = res.type(req.get('Content-Type'));
+            }
+            res.send(req.body);
+        }
+);
+
+router.route('/*')
+    .post(function (request, response) {
+        response.json({message: "Not valid query!"});
+    })
+
+router.use('/', router);
+router.listen(process.env.PORT || 8080);
