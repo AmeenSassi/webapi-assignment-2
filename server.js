@@ -32,7 +32,7 @@ function responder(method, request, response) {
 }
 
 router.use(bodyParser.text({
-    type: function(req) {
+    type: function(request) {
         return 'text';
     }
 }));
@@ -57,13 +57,7 @@ router.route('/puts')
 
 router.route('/delete')
     .post(authController.isAuthenticated,function (request, response) {
-            console.log(request.body);
-            res = res.status(200);
-            if (req.get('Content-Type')) {
-                console.log("Content-Type: " + req.get('Content-Type'));
-                res = res.type(req.get('Content-Type'));
-            }
-            res.send(req.body);
+        responder('deletes', request, response);
         }
 );
 
@@ -72,5 +66,5 @@ router.route('/*')
         response.json({message: "Not valid query!"});
     })
 
-router.use('/', router);
-router.listen(process.env.PORT || 8080);
+app.use('/', router);
+app.listen(process.env.PORT || 8080);
