@@ -49,7 +49,7 @@ router.route('/get')
         }
 );
 
-router.route('/put')
+router.route('/puts')
     .put(function (request, response) {
            responder('puts', request, response);
         }
