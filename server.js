@@ -39,25 +39,25 @@ router.use(bodyParser.text({
 
 router.route('/post')
     .post(function (request, response) {
-            responder('posts', request, response);
+            responder('post', request, response);
         }
 );
 
 router.route('/get')
     .get(function (request, response) {
-           responder('gets', request, response);
+           responder('get', request, response);
         }
 );
 
 router.route('/puts')
     .put(function (request, response) {
-           responder('puts', request, response);
+           responder('put', request, response);
         }
 );
 
 router.route('/delete')
     .post(authController.isAuthenticated,function (request, response) {
-        responder('deletes', request, response);
+        responder('delete', request, response);
         }
 );
 
