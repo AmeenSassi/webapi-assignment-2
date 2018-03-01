@@ -61,7 +61,8 @@ router.route('/deletes')
         }
 );
 
-router.route('/*', function (request, response) {
+router.route('/*') 
+    .gets(function (request, response) {
         response.json({message: "Not valid query!"});
     }
 );
