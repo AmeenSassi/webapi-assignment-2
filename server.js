@@ -37,13 +37,13 @@ router.use(bodyParser.text({
     }
 }));
 
-router.route('/post')
+router.route('/posts')
     .post(function (request, response) {
             responder('post', request, response);
         }
 );
 
-router.route('/get')
+router.route('/gets')
     .get(function (request, response) {
            responder('get', request, response);
         }
@@ -55,7 +55,7 @@ router.route('/puts')
         }
 );
 
-router.route('/delete')
+router.route('/deletes')
     .post(authController.isAuthenticated,function (request, response) {
         responder('delete', request, response);
         }
