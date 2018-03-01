@@ -56,15 +56,15 @@ router.route('/puts')
 );
 
 router.route('/deletes')
-    .post(authController.isAuthenticated,function (request, response) {
+    .delete(authController.isAuthenticated,function (request, response) {
         responder('delete', request, response);
         }
 );
 
-router.route('/*')
-    .post(function (request, response) {
+router.route('/*', function (request, response) {
         response.json({message: "Not valid query!"});
-    })
+    }
+);
 
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
