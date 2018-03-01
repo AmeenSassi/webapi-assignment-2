@@ -1,0 +1,98 @@
+{
+	"info": {
+		"name": "Assignment 2",
+		"_postman_id": "8bbd9614-cb84-8919-1efa-c0bffe9acffb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Puts",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://webapi-assignment-2.herokuapp.com/puts",
+					"protocol": "http",
+					"host": [
+						"webapi-assignment-2",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"puts"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Gets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://webapi-assignment-2.herokuapp.com/gets",
+					"protocol": "http",
+					"host": [
+						"webapi-assignment-2",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"gets"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Posts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://webapi-assignment-2.herokuapp.com/posts",
+					"protocol": "http",
+					"host": [
+						"webapi-assignment-2",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Deletes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://webapi-assignment-2.herokuapp.com/deletes",
+					"protocol": "http",
+					"host": [
+						"webapi-assignment-2",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"deletes"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
