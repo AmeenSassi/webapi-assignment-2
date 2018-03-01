@@ -61,11 +61,12 @@ router.route('/deletes')
         }
 );
 
-router.route('/*') 
-    .gets(function (request, response) {
-        response.json({message: "Not valid query!"});
-    }
-);
+//
+//router.route('/*') 
+//    .gets(function (request, response) {
+//        response.json({message: "Not valid query!"});
+//    }
+//);
 
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
