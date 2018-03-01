@@ -1,7 +1,7 @@
 var passport = require('passport');
-var BasicStartegy = require('passport-http').BasicStartegy;
+var BasicStrategy = require('passport-http').BasicStrategy;
 
-passport.use(new BasicStartegy(
+passport.use(new BasicStrategy(
     function(username, password, done) {
         var user = { name: "Ameen", password: "123456" };
         if (username == user.name && password == user.password){
